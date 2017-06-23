@@ -42,3 +42,18 @@ git log --graph --oneline NameOfFileToCompare NameOfBranchToCompare. ex "git log
 
 -------------------MERGING ----------------------------------------------------------------------------
 git merge NameOfFile NameOfOtherFile will merge two branches, compare a commit to its parent is git show commit_id
+
+-------------------SYNCING TO GITHUB-------------------------------------------------------------------
+we will be "pushing" our local files to github to have a copy of our files on github. 
+note when pushing, we get to choose which head to push, but all parent files of that head will be pushed as well and stored
+
+once you have created a repository on github.com, we can add the remote using the remote provided by github webpage
+"git remote add origin urlProvided" ex. git remote add origin https://github.com/tony-ngo/reflections.git
+
+we can check to see that we now have a remote by using, where v is verbose meaning to show more
+"git remote -v" this shows the urls for where we will push and fetch data from our github repository 
+now we can use "git push origin FILENAME"
+
+---------------------------PUSHING to github-------------------------------------------------------------
+we can now see how to push our files onto github by using
+"gut push origin master" which pushes the master/head.
