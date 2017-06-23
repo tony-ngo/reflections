@@ -1,13 +1,16 @@
--------------------------------INITIALIZING A REPOSITORY ---------------------------
+-------------------------------INITIALIZING A REPOSITORY -------------------------------------------
 you can use "git init" in a folder containing your program files to start a repository
 you will not be able to view any commits, since there are none, however you can use git status
 
 I used the below command to choose sublime text as my main editor for commits
 git config --global core.editor "'C:/Program Files/Sublime Text 3/sublime_text.exe' -n -w"
 
-------------------------------------------------------------------------------------
+ --------------------------- TROUBLESHOOTING -------------------------------------------------------
+ you can use the version control to go back to older commits before there were bugs 
+ use the command "git checkout commit_id" to set the "current version" to be the commit of your choice.
+ to revert back to having the "current version" as your most recent commit, use the same command but with the latest commit ID
 
-we used "git diff commit_id1 commit id2" to view the differences between two commits and their changes
+ we used "git diff commit_id1 commit id2" to view the differences between two commits and their changes
 	- the green + indicates things added while the red - indicates lines removed
 
 a repository is basically all the files that have been commited, including all the previous versions of commits
@@ -15,13 +18,11 @@ a repository is basically all the files that have been commited, including all t
  a commit will include even files that were not changed, but part of the program, example if you changed a CSS file but not its HTML, they will still both be commits
 
 "git clone" can be used to copy an entire repository in the case you want to copy to a usb or make a backup for example
- --------------------------- TROUBLESHOOTING -------------------------------------
- you can use the version control to go back to older commits before there were bugs 
- use the command "git checkout commit_id" to set the "current version" to be the commit of your choice.
- to revert back to having the "current version" as your most recent commit, use the same command but with the latest commit ID
 
+we used below command to initialize sublime text as editor for git bash
+echo 'alias subl="C:/Program\ Files/Sublime\ Text\ 3/sublime_text.exe"' >> ~/.bashrc
 
---------------------------- COMMITTING PROCESS --------
+--------------------------- COMMITTING PROCESS -------------------------------------------------------
 1. Make your change.
 2. git add - this stages your changes for committing
 3. git commit - this commits your staged changes locally
@@ -35,9 +36,9 @@ The next step is to actually add the file to the staging area from the untracked
 git add FILENAME. we can check if it was added to the staging area we can use git status. 
 Now we can also check the files between the staging area and the repository by using command git diff --staged
 
------------------------- BRANCHES ----------------------
+------------------------ BRANCHES ---------------------------------------------------------------------
 We can branch out from the original series of commits for example if we want to veer off and try adding a language or if we want to add an experiemental feature. We create branches using "git branch NAMEOFBRAnCH". We can see all the current branches by using git branch without argunments. Like we learned previously we can switch commits/branches by using "git checkout NAME". The astericks shows the branch currently checked out. We can visually see the branches made if we use
 git log --graph --oneline NameOfFileToCompare NameOfBranchToCompare. ex "git log --graph --oneline master easy-mode" master is the main branch
 
--------------------MERGING ------------------
+-------------------MERGING ----------------------------------------------------------------------------
 git merge NameOfFile NameOfOtherFile will merge two branches, compare a commit to its parent is git show commit_id
