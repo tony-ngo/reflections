@@ -1,3 +1,6 @@
+What is git, what is github?
+git is the version control tool that github is built on, we use git locally and push to the cloud to share/collaborate
+
 -------------------------------INITIALIZING A REPOSITORY -------------------------------------------
 you can use "git init" in a folder containing your program files to start a repository
 you will not be able to view any commits, since there are none, however you can use git status
@@ -24,9 +27,13 @@ echo 'alias subl="C:/Program\ Files/Sublime\ Text\ 3/sublime_text.exe"' >> ~/.ba
 
 --------------------------- COMMITTING PROCESS -------------------------------------------------------
 1. Make your change.
-2. git add - this stages your changes for committing
+2. git add - this stages your changes for committing 
 3. git commit - this commits your staged changes locally
 4. git push - this pushes your committed changes to a remote
+
+// staging area leaves more flexibility for which files you truly want to commit and acts as a loading dock.
+// you could be working and making changes and staging these changes, however you may realize later you didnt need
+// that specific change you made to a file, so decide not to commit it.
 
 so once you've made a change to the program you are working on and have saved, there are a few steps
 we can see that the file has been edited if we go to the git folder and use git status, it will show up as modified.
@@ -37,13 +44,15 @@ git add FILENAME. we can check if it was added to the staging area we can use gi
 Now we can also check the files between the staging area and the repository by using command git diff --staged
 
 ------------------------ BRANCHES ---------------------------------------------------------------------
-We can branch out from the original series of commits for example if we want to veer off and try adding a language or if we want to add an experiemental feature. We create branches using "git branch NAMEOFBRAnCH". We can see all the current branches by using git branch without argunments. Like we learned previously we can switch commits/branches by using "git checkout NAME". The astericks shows the branch currently checked out. We can visually see the branches made if we use
+We can branch out from the original series of commits/master for example if we want to veer off and try adding a language or if we want to add an experiemental feature. We create branches using 
+"git branch NAMEOFBRAnCH". We can see all the current branches by using git branch without argunments. Like we learned previously we can switch commits/branches by using 
+"git checkout NAME". to be able to make changes to the branch. The astericks shows the branch currently checked out. We can visually see the branches made if we use
 git log --graph --oneline NameOfFileToCompare NameOfBranchToCompare. ex "git log --graph --oneline master easy-mode" master is the main branch
 
 -------------------MERGING ----------------------------------------------------------------------------
 git merge NameOfFile NameOfOtherFile will merge two branches, compare a commit to its parent is git show commit_id
 
--------------------SYNCING TO GITHUB-------------------------------------------------------------------
+-------------------SYNCING/REMOTE TO GITHUB-------------------------------------------------------------------
 we will be "pushing" our local files to github to have a copy of our files on github. 
 note when pushing, we get to choose which head to push, but all parent files of that head will be pushed as well and stored
 
@@ -56,4 +65,33 @@ now we can use "git push origin FILENAME"
 
 ---------------------------PUSHING to github-------------------------------------------------------------
 we can now see how to push our files onto github by using
-"gut push origin master" which pushes the master/head.
+"git push origin master" which pushes the master/head.
+if we have created a branch and wish to push the branch to github, we would choose the name of the branch
+instead of master. it will show up on github as a branch from master.
+
+----------------------------PULLING from github-----------------------------------------------------------
+When we want to pull from github we use this format
+"git pull origin master" 
+we chose origin because thats what we named it the first time and we chose master since this is the branch we wish to retreive
+another common naming convention is upstream instead of origin. use upstream when you are collaborating and you want to 
+make a change to master that is conflicting as a pull before you can merge.
+
+----------------------------FORK on github--------------------------------------------------------------
+We will want to do this if we are to get a "copy" of someones repository up to their last commit and wish to 
+work on it from there. To do this, we go to their github page, fork the repository and then if we want to work on it
+from our local machines, we can use the url from the "clone or download" link provided by github
+
+WARNING!!!! it will clone it to the working directory in CMD you are currently in, therefore make sure you cd to the 
+directory you wish to save it!!!!
+
+"git clone URL" ex. git clone https://github.com/tony-ngo/recipes.git
+we can see if it was cloned sucessfully by checking the folder that was added
+now we can add new commits to this repository linked to the fork on github
+
+---------------------------FETCH from github-----------------------------------------------------------------
+definition fast-forward merge: if the branch you are merging to, is an ancestor of the branch you are merging from
+Fetching from github is different from pulling from github, where a pull is equivalent to a fetch+merge
+In the case of a fetch ("git fetch origin"), we are fetching the origin/master from github and this does not
+contain any of the changes you may have committed to your local master file. Thus after fetching, it is common to 
+merge the origin/master to your local master and push to github. likewise, you can just use pull which does this for you.
+There may be issues with conflicts in merging however, so it may be required to fetch/merge instead. 
