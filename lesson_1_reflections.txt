@@ -1,0 +1,13 @@
+we used "git diff commit_id1 commit id2" to view the differences between two commits and their changes
+	- the green + indicates things added while the red - indicates lines removed
+
+a repository is basically all the files that have been commited, including all the previous versions of commits
+
+ a commit will include even files that were not changed, but part of the program, example if you changed a CSS file but not its HTML, they will still both be commits
+
+"git clone" can be used to copy an entire repository in the case you want to copy to a usb or make a backup for example
+ --------------------------- TROUBLESHOOTING -------------------------------------
+ you can use the version control to go back to older commits before there were bugs 
+ use the command "git checkout commit_id" to set the "current version" to be the commit of your choice.
+ to revert back to having the "current version" as your most recent commit, use the same command but with the latest commit ID
+
