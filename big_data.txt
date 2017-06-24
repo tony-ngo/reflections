@@ -17,15 +17,20 @@ Many variables to consider to get large benefits
 -Velocity, terabytes per day... we don't want to discard data. 
 we can use data for predictions for things like personal interest of users.
 
-------------------------MAPREDUCE---------------------------------------
+------------------------MAPREDUCE INTRO---------------------------------------
 how is data processed by mapreduce? 
 say we have a large file. processing that file serially from top to bottom can take a long time.
 mapreduce is designed to process the data in parallel. the file is broken into chucks and processed in parallel.
+
+We have Mappers and we have Reducers. the mappers work in parallel and have intermediate records(key,value) ex key - store name, value - total amount of money made at that location. once mappers are finished, a phase of shuffle and sort takes place which maps to the reducers which take individual keys and works on each of those values, and continues this for each key. 
+we need a mapper for each block of data that we want to process. 
 
 ---------------HADOOP INTRO----------------------------------------------
 Hadoop is essentially a kernal for an OS to handle big data.
 files are store in HDFS - hadoop distributed file system
 process with MapReduce MP.
 
-NAMENODE is the memory block that has all the links for which data blocks in each node belong to which file. 
-Each file is divided into 3 data blocks distributed into different nodes (redundant but reduces failure or lost data)
+NAMENODE is the memory block that has all the links for which data blocks in each data node belong to which file. 
+Each file is divided into 3 data blocks distributed into different data nodes (redundant but reduces failure or lost data)
+
+each data node will have a daemon(a piece of software running all the time) task tracker (which is the actual map and reduce task) from the Job Tracker 
