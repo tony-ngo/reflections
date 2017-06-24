@@ -1,0 +1,31 @@
+What is considered big data?
+when one machine cannot handle all the data being processed. 
+Challenges with big data
+- data is created fast
+- data from diff sources in various formats
+
+3V's - Volume, Variety, Velocity
+- Volume is the amount of data, /size of data
+Diff types of data worth storing - transactions, logs business user sensor medical social etc.
+
+- Variety, structured and semi-structured tables that the data fits. 
+hadoop stores data in its raw format which can be manipulated later.
+ex. variety of data to be stored for an overall purpose, like a truck travelling to a store. 
+info like current gps, traffic data, current load, fuel efficiency etc may be useful data. 
+Many variables to consider to get large benefits
+
+-Velocity, terabytes per day... we don't want to discard data. 
+we can use data for predictions for things like personal interest of users.
+
+------------------------MAPREDUCE---------------------------------------
+how is data processed by mapreduce? 
+say we have a large file. processing that file serially from top to bottom can take a long time.
+mapreduce is designed to process the data in parallel. the file is broken into chucks and processed in parallel.
+
+---------------HADOOP INTRO----------------------------------------------
+Hadoop is essentially a kernal for an OS to handle big data.
+files are store in HDFS - hadoop distributed file system
+process with MapReduce MP.
+
+NAMENODE is the memory block that has all the links for which data blocks in each node belong to which file. 
+Each file is divided into 3 data blocks distributed into different nodes (redundant but reduces failure or lost data)
