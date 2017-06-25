@@ -18,6 +18,7 @@ Many variables to consider to get large benefits
 we can use data for predictions for things like personal interest of users.
 
 ------------------------MAPREDUCE INTRO---------------------------------------
+often written in java, but can be coded in python through hadoop streaming.
 how is data processed by mapreduce? 
 say we have a large file. processing that file serially from top to bottom can take a long time.
 mapreduce is designed to process the data in parallel. the file is broken into chucks and processed in parallel.
@@ -34,3 +35,25 @@ NAMENODE is the memory block that has all the links for which data blocks in eac
 Each file is divided into 3 data blocks distributed into different data nodes (redundant but reduces failure or lost data)
 
 each data node will have a daemon(a piece of software running all the time) task tracker (which is the actual map and reduce task) from the Job Tracker 
+
+---------------- HDFS DEMO -----------------------------------------------------
+all the commands that interact with hadoop file system start with hadoop fs
+
+In the current working directory, can check using "hadoop fs -ls" if we have a file ready for hdfs or hadoop cluster
+
+we can put a file(such as a txt file) into hdfs by using 
+hadoop fs -put FILENAME
+the command hadoop fs -tail FILENAME can check the last few lines of FILENAME on the screen.
+hadoop fs -cat will show you all the lines or hadoop fs -cat joboutput/part-00000 | less for reduced lines. 
+these commands are very similar to linux commands (like -mv to replace the name or move, or -rm which removes a file). 
+if you want to put the file onto your local machine, you can use
+"hadoop fs -get FILEDIRECTORY NAMEOFNEWDOC" 
+for example, hadoop fs -get joboutput/part-00000 mylocalfile.txt
+
+if you want to see if the mapreduce was a success, use
+hadoop fs -ls OUTPUTFOLDER and it will show SUCESS/FAILURE, logs etc, output.
+
+hadoop jar /usr/lib/hadoop-0.20-mapreduce/contrib/streaming/hadoop-streaming-2.0.0-mr1-cdh4.1.1.jar -mapper mapper.py -reducer reducer.py -file mapper.py -file reducer.py -input myinput -output joboutput 
+
+---------------------------- HDFS testing outside hadoop -------------------------------------
+cat testfile | ./mapper.py | sort | ./reducer.py
